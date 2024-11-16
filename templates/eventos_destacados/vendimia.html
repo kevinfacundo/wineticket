@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@200..1000&display=swap" rel="stylesheet">
+    <title>Vendimia 2024</title>
+    <link rel="icon" href="/static/images/wine4.png">
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    <nav class="navigation">
+        <div class="navbar-container">
+            <div class="logo-container">
+                <a href="/inicio">
+                    <div class="logo"><img src="../static/images/wine4.png" alt="Logo"></div>
+                </a>
+            </div>
+            <ul class="navbar">
+                <li><a href="/inicio">Inicio</a></li>
+                <li><a href="/mis_tickets">Mis tickets</a></li>
+                <li><a href="/mis_reseñas">Mis reseñas</a></li>
+                <li><a href="/perfil">Mi perfíl</a></li>
+                <li>
+                    {% if current_user.is_authenticated and current_user.rol == 'admin' %}
+                        <a href="/usuarios">Usuarios</a>
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <section>
+        <div class="carousel-info-container">
+            <div class="carousel-event">
+                <!-- Carrusel -->
+                <div class="events-carousel">
+                    <button id="btn-prev-event">‹</button>
+                    <div class="carousel-inner-event">
+                        <img id="card-event" src="../static/images/event-default.png" alt="Evento">
+                    </div>
+                    <button id="btn-next-event">›</button>
+                </div>
+            </div>
+            <div class="info-container">
+                <h2>Fiesta Nacional de la Vendimia 2024</h2>
+                <p>Fecha: 1 de Marzo</p>
+                <p>Hora: 18:00</p>
+                <p>Precio: $12.000 - $30.000</p>
+                <p>Ubicación: Teatro Griego Frank Romero Day</p>
+                <button class="btn-comprar" onclick="window.location.href='/comprar_tickets'">Comprar</button>
+
+            </div>
+        </div>
+        <div class="description-container">
+            <h2 id="title-event-description">Descripción del evento</h2>
+            <p id="event-description">experiencia única que celebra el vino, el arte y la pasión mendocina. Únete a nosotros y vive la magia de una tradición que une generaciones. ¡Te esperamos con una copa en alto y el corazón abierto!</p>
+        </div>
+        <div class="map-container">
+            <h3>Ubicación del evento</h3>
+            <iframe id="event-map"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3350.2376664625385!2d-68.89574198936563!3d-32.89188396901372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a326187519947f%3A0x789abdbe78871034!2sTeatro%20Griego%20Frank%20Romero%20Day!5e0!3m2!1ses-419!2sar!4v1730443000693!5m2!1ses-419!2sar"
+                    width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+    <script src="/static/js/carruseles_eventos_destacados/carrusel_eventos_destacados1.js"></script>
+</body>
+</html>

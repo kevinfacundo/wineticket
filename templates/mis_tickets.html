@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@200..1000&display=swap" rel="stylesheet">
+    <title>Mis Tickets</title>
+    <link rel="icon" href="/static/images/wine4.png">
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+
+<body>
+    
+    <nav class="navigation">
+        <div class="navbar-container">
+            <div class="logo-container">
+                <a href="/inicio">
+                    <div class="logo"><img src="../static/images/wine4.png" alt="Logo"></div>
+                </a>
+            </div>
+            <ul class="navbar">
+                <li><a href="/inicio">Inicio</a></li>
+                <li><a href="/mis_tickets">Mis tickets</a></li>
+                <li><a href="/mis_reseñas">Mis reseñas</a></li>
+                <li><a href="/perfil">Mi perfil</a></li>
+                <li>
+                    {% if current_user.is_authenticated and current_user.rol == 'admin' %}
+                        <a href="/usuarios">Usuarios</a>
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="titulo-mis_tickets">
+        <h1>Mis Tickets</h1>
+    </div>
+
+    <table class="tickets-table">
+        <thead>
+            <tr>
+                <th>ID de Compra</th>
+                <th>Código QR</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ticket in tickets %}
+            <tr>
+                <td>{{ ticket[0] }}</td>
+                <td>
+                    {% if ticket[1] %}
+                        <img class="ticket-qr" src="data:image/png;base64,{{ ticket[1] }}" alt="QR Code">
+                    {% else %}
+                        <p>No hay código QR disponible.</p>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        
+    </table>
+
+</body>
+</html>

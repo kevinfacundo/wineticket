@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@200..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Mis reseñas</title>
+    <link rel="icon" href="/static/images/wine4.png">
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+
+    <nav class="navigation">
+        <div class="navbar-container">
+            <div class="logo-container">
+                <a href="/inicio">
+                    <div class="logo"><img src="../static/images/wine4.png" alt="Logo"></div>
+                </a>
+            </div>
+            <ul class="navbar">
+                <li><a href="/inicio">Inicio</a></li>
+                <li><a href="/mis_tickets">Mis tickets</a></li>
+                <li><a href="/mis_reseñas">Mis reseñas</a></li>
+                <li><a href="/perfil">Mi perfil</a></li>
+                <li>
+                    {% if current_user.is_authenticated and current_user.rol == 'admin' %}
+                        <a href="/usuarios">Usuarios</a>
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-reseñas">
+        <h1 class="title-reseñas">Mis Reseñas</h1>
+        <h2 class="subtitle-reseñas">Agrega reseñas personales sobre los eventos asistidos o vinos que llamaron tu atención.</h2>
+
+        <!-- Formulario para agregar una nueva reseña -->
+        <form class="form-reseña" action="{{ url_for('mis_reseñas') }}" method="POST">
+            <textarea class="textarea-reseña" name="comentario" rows="4" placeholder="Escribe tu reseña aquí..." required></textarea>
+            <button class="button-reseña" type="submit">Agregar Reseña</button>
+        </form>
+
+        <h2 class="subtitle-reseñas">Reseñas Anteriores</h2>
+        {% if reseñas %}
+            <ul class="list-reseñas">
+                {% for reseña in reseñas %}
+                    <li class="reseña-item">
+                        <p class="reseña-comentario">{{ reseña[1] }}</p> <!-- Comentario de la reseña -->
+                        <small class="reseña-fecha">Fecha: {{ reseña[2] }}</small> <!-- Fecha de la reseña -->
+
+                        <!-- Formulario para eliminar reseña -->
+                        <div class="eliminar-container">
+                            <form action="{{ url_for('mis_reseñas') }}" method="POST" style="display:inline;">
+                                <input type="hidden" name="eliminar_reseña" value="{{ reseña[0] }}"> <!-- ID de la reseña -->
+                                <button class="button-eliminar-reseña" type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar esta reseña?')">Eliminar</button>
+                            </form>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No has agregado ninguna reseña aún.</p>
+        {% endif %}
+    </div>
+
+</body>
+</html>
+

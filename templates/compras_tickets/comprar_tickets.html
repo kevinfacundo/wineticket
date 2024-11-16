@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@200..1000&display=swap" rel="stylesheet">
+    <title>Comprar tickets Vendimia 2024</title>
+    <link rel="icon" href="/static/images/wine4.png">
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+
+    <nav class="navigation">
+        <div class="navbar-container">
+            <div class="logo-container">
+                <a href="/inicio">
+                    <div class="logo"><img src="../static/images/wine4.png" alt="Logo"></div>
+                </a>
+            </div>
+            <ul class="navbar">
+                <li><a href="/inicio">Inicio</a></li>
+                <li><a href="/mis_tickets">Mis tickets</a></li>
+                <li><a href="/mis_reseñas">Mis reseñas</a></li>
+                <li><a href="/perfil">Mi perfil</a></li>
+                <li>
+                    {% if current_user.is_authenticated and current_user.rol == 'admin' %}
+                        <a href="/usuarios">Usuarios</a>
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <form method="POST" action="/comprar_tickets">
+        <div class="container-tickets">
+            <div class="subcontainer-tickets">
+                <h2>Comprar Tickets</h2>
+                <div class="form-group-tickets">
+                    <label for="cantidad-entradas">Cantidad de Entradas:</label>
+                    <div class="input-group">
+                        <button type="button" onclick="cambiarCantidad(-1)">&#8249;</button>
+                        <input type="number" name="cantidad_entradas" id="cantidad-entradas" min="1" max="6" value="1" oninput="calcularTotal()">
+                        <button type="button" onclick="cambiarCantidad(1)">&#8250;</button>
+                    </div>
+                </div>
+                <div class="form-group-tickets">
+                    <label for="types-tickets">Entrada:</label>
+                    <select name="types_tickets" id="types-tickets" onchange="calcularTotal()">
+                        <option value="malbec" data-precio="0">$0</option>
+                        <option value="tempranillo" data-precio="0">$0</option>
+                    </select>
+                </div>
+                <div class="form-group-tickets">
+                    <label for="metodo-pago">Método de Pago:</label>
+                    <select name="metodo_pago" id="metodo-pago">
+                        <option value="tarjeta">Tarjeta de Crédito/Débito</option>
+                        <option value="transferencia">Transferencia Bancaria</option>
+                    </select>
+                </div>
+
+                <div class="total">
+                    <label for="total">Total:</label>
+                    <p><span id="total">$0</span></p> 
+                </div>
+            </div>
+            
+            <div class="buttons-tickets">
+                <button type="submit" class="confirm">Confirmar Compra</button>
+                <button type="button" class="back" onclick="window.location.href='/inicio'">Volver</button>
+            </div>
+        </div>
+    </form>
+
+    <script src="../static/js/cantidad_tickets.js"></script>
+</body>
+</html>

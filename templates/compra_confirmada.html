@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@200..1000&display=swap" rel="stylesheet">
+    <title>Compra confirmada</title>
+    <link rel="icon" href="/static/images/wine4.png">
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+
+    <nav class="navigation">
+        <div class="navbar-container">
+            <div class="logo-container">
+                <a href="/inicio">
+                    <div class="logo"><img src="../static/images/wine4.png" alt="Logo"></div>
+                </a>
+            </div>
+            <ul class="navbar">
+                <li><a href="/inicio">Inicio</a></li>
+                <li><a href="/mis_tickets">Mis tickets</a></li>
+                <li><a href="/mis_reseñas">Mis reseñas</a></li>
+                <li><a href="/perfil">Mi perfil</a></li>
+                <li>
+                    {% if current_user.is_authenticated and current_user.rol == 'admin' %}
+                        <a href="/usuarios">Usuarios</a>
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="confirmation-container">
+        <h1>Compra Confirmada</h1>
+        <p>¡Gracias por tu compra!</p>
+        <p><a class="download-qr-link" href="{{ url_for('descargar_qr', compra_id=compra_id) }}">Vuelve a descargar tu QR</a></p>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const link = document.createElement('a');
+            link.href = "{{ url_for('descargar_qr', compra_id=compra_id) }}";
+            link.download = '';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        };
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@200..1000&display=swap" rel="stylesheet">
+    <title>Gestión de Usuarios</title>
+    <link rel="icon" href="/static/images/wine4.png">
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    <nav class="navigation">
+        <div class="navbar-container">
+            <div class="logo-container">
+                <a href="/inicio">
+                    <div class="logo"><img src="../static/images/wine4.png" alt="Logo"></div>
+                </a>
+            </div>
+            <ul class="navbar">
+                <li><a href="/inicio">Inicio</a></li>
+                <li><a href="/mis_tickets">Mis tickets</a></li>
+                <li><a href="/mis_reseñas">Mis reseñas</a></li>
+                <li><a href="/perfil">Mi perfil</a></li>
+                <li>
+                    {% if current_user.is_authenticated and current_user.rol == 'admin' %}
+                        <a href="/usuarios">Usuarios</a>
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="title-table">
+        <h1>GESTIÓN DE USUARIOS</h1>
+
+        <!-- Tabla de usuarios -->
+        <table class="users-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Email</th>
+                    <th>Contraseña</th> <!-- Nueva columna para mostrar la contraseña -->
+                    <th>País</th>
+                    <th>Provincia</th>
+                    <th>Rol</th>
+                    <th>Fecha de Registro</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for usuario in usuarios %}
+                <tr>
+                    <td>{{ usuario[0] }}</td>
+                    <td>{{ usuario[1] }}</td>
+                    <td>{{ usuario[2] }}</td>
+                    <td>{{ usuario[3] }}</td>
+                    <td>{{ usuario[4] }}</td> 
+                    <td>{{ usuario[5] }}</td>
+                    <td>{{ usuario[6] }}</td>
+                    <td>{{ usuario[7] }}</td>
+                    <td>{{ usuario[8] }}</td>
+                    <td>
+                        <!-- Botón para editar el usuario -->
+                        <a href="/edit_usuarios/{{ usuario[0] }}" class="btn-edit-table">Editar</a>
+                        
+                        <!-- Botón para eliminar el usuario -->
+                        <form action="/eliminar_usuarios/{{ usuario[0] }}" method="POST" style="display:inline;">
+                            <button type="submit" class="btn-delete-table" onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?');">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Botón para crear un nuevo usuario -->
+        <div class="button-create-table">
+            <a href="/crear_usuarios" class="btn btn-primary">Crear Usuario</a>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@200..1000&display=swap" rel="stylesheet">
+    <title>Inicio</title>
+    <link rel="icon" href="/static/images/wine4.png">
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    <nav class="navigation">
+        <div class="navbar-container">
+            <div class="logo-container">
+                <a href="/inicio">
+                    <div class="logo"><img src="../static/images/wine4.png" alt="Logo"></div>
+                </a>
+            </div>
+            <ul class="navbar">
+                <li><a href="/inicio">Inicio</a></li>
+                <li><a href="/mis_tickets">Mis tickets</a></li>
+                <li><a href="/mis_reseñas">Mis reseñas</a></li>
+                <li><a href="/perfil">Mi perfíl</a></li>
+                <li>
+                    {% if current_user.is_authenticated and current_user.rol == 'admin' %}
+                        <a href="/usuarios">Usuarios</a>
+                    {% endif %}
+                </li>
+                
+            </ul>
+        </div>
+    </nav>
+    <section>
+        <div id="carousel">
+            <button id="btn-prev">
+                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 3a1 1 0 0 0-.993.883L5 4v16a1 1 0 0 0 1.993.117L7 20V4a1 1 0 0 0-1-1Zm12.707.293a1 1 0 0 0-1.32-.083l-.094.083-8 8a1 1 0 0 0-.083 1.32l.083.094 8 8a1 1 0 0 0 1.497-1.32l-.083-.094L11.414 12l7.293-7.293a1 1 0 0 0 0-1.414Z" fill="#ffffff"/>
+                </svg>
+            </button>
+            <a id="card-link" href="#">
+                <img id="card" src="../static/images/event-default.png" alt="Evento destacado">
+            </a>
+            <button id="btn-next">
+                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 3a1 1 0 0 1 .993.883L19 4v16a1 1 0 0 1-1.993.117L17 20V4a1 1 0 0 1 1-1Zm-12.707.293a1 1 0 0 1 1.32-.083l.094.083 8 8a1 1 0 0 1 .083 1.32l-.083.094-8 8a1 1 0 0 1-1.497-1.32l.083-.094L12.586 12 5.293 4.707a1 1 0 0 1 0-1.414Z" fill="#ffffff"/>
+                </svg>
+            </button>
+        </div>
+        <div class="filter" id="filter">
+            <ul>
+                <li class="filter-elem">
+                    <input name="Buscar" type="text" placeholder="Buscar evento">
+                </li>
+                <li class="filter-elem">
+                    <select name="categories" id="categories" aria-placeholder="Categorias">
+                        <option value="" selected>Seleccione una opción...</option>
+                        <option value="cata">Cata de vinos</option>
+                        <option value="sunset">Sunset</option>
+                        <option value="cine">Cine en bodega</option>
+                        <option value="expo">Expo vino</option>
+                        <option value="festival">Festival</option>
+                        <option value="cena">Cena maridaje</option>
+                    </select>
+                </li>
+                <li class="filter-elem">
+                    <input aria-placeholder="fecha" type="date" placeholder="Seleccione una fecha">
+                </li>
+            </ul>
+        </div>
+        <div class="event-container">
+            <div class="event-card">
+                <img src="../static/images/SUNSET BODEGA LOPEZ.jpg" alt="Evento 1" class="event-image">
+                <h3>SUNSET BODEGA LOPEZ</h3>
+                <p>Sunset</p>
+                <input type="date" value="2024-02-23" readonly class="event-date">
+                <button onclick="window.location.href='/sunset_bodega_lopez'">Más info</button>
+            </div>
+            <div class="event-card">
+                <img src="../static/images/SEPTIMA WINES.jpg" alt="Evento 2" class="event-image">
+                <h3>VALENTINO RESTAURANT & BODEGA SEPTIMA</h3>
+                <p>Cena maridaje</p>
+                <input type="date" value="2024-04-17" readonly class="event-date">
+                <button onclick="window.location.href='/valentino_bodega_septima'">Más info</button>
+            </div>
+            <div class="event-card">
+                <img src="../static/images/ENVINADOS.jpeg" alt="Evento 3" class="event-image">
+                <h3>DEGUSTACION DE VINOS WINE BAR</h3>
+                <p>Cata de vinos</p>
+                <input type="date" value="2024-10-10" readonly class="event-date">
+                <button onclick="window.location.href='/degustacion_wine_bar'">Más info</button>
+            </div>
+            <div class="event-card">
+                <img src="../static/images/CINE EN BODEGAS ATAMISQUE.jpeg" alt="Evento 4" class="event-image">
+                <h3>CINE FRANCES EN BODEGA ATAMISQUE</h3>
+                <p>Cine en bodega</p>
+                <input type="date" value="2024-12-23" readonly class="event-date">
+                <button onclick="window.location.href='/cine_frances_bodega_atamisque'">Más info</button>
+            </div>
+        </div>
+    </section>
+    <script src="../static/js/main.js"></script>
+    <script src="../static/js/filter.js"></script>
+</body>
+</html>

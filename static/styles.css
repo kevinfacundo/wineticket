@@ -1,0 +1,1391 @@
+/*Estilos generales*/
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Mulish', sans-serif;
+    font-size: large;
+}
+
+/*Estilos Navbar*/
+
+.navigation {
+    background: linear-gradient(270deg, #8e1b3d, #fbff0194);
+    background: linear-gradient(270deg, rgba(191, 15, 70, 0.8), rgba(251, 255, 1, 0.3));
+    background: conic-gradient(#a51943, #fbff0194);
+    background: repeating-linear-gradient(45deg, #a51943, #a51943 10px, #df005594 10px, #1d010c94 20px);
+    background: radial-gradient(ellipse at center, #fbff00b2, #a51943);
+    background-color: #a51943;
+    background: linear-gradient(0deg, #a51943, #f3008ec2);
+}
+
+.navbar {
+    margin: 0;
+    padding: 0;
+    list-style-type: none; 
+    height: 80px;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.navbar li {
+    margin: 0;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px;
+    display: block;
+    font-size: larger;
+    font-weight: 800;
+}
+
+/*Estilos y ajustes logo en Navbar*/
+
+.logo-container {
+    width: 200px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; 
+}
+
+.logo img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.navbar a:hover {
+    background: transparent;
+    border-radius: 5px;
+    transition: ease 0.1s;
+    transform: translateY(-1px);
+    box-shadow: inset -3px -3px 10px rgba(99, 99, 99, 0.5);
+}
+
+/*Estilos y ajustes flechas carrusel EVENTOS DESTACADOS*/
+
+#btn-next, #btn-prev {
+    position: absolute;
+    background: black; 
+    color: white; 
+    opacity: 0.8; 
+    border: none; 
+    width: 40px; 
+    height: 40px; 
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    cursor: pointer; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    z-index: 10; 
+}
+
+#btn-prev {
+    left: 10px; 
+}
+
+#btn-next {
+    right: 10px; 
+}
+
+#carousel {
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    overflow: hidden;
+    height: 27rem;           
+    width: 100%;
+    background: linear-gradient(0deg, #f3008ec2, #a51943);
+    position: relative;
+}
+
+#card {
+    width: 100vw;           
+    height: 27rem;            
+    object-fit: cover;       
+    display: block;          
+    transition: opacity 0.5s ease-in-out; 
+}
+
+.carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease-in-out; 
+    width: 100%;            
+    height: 100%;           
+}
+
+/* Estilo para el filtrado de datos */
+
+.filter {
+    display: flex;
+    gap: 15px; 
+    justify-content: center; 
+    align-items: center; 
+    margin-top: 20px; 
+}
+
+.filter-elem {
+    display: inline-block;
+}
+
+.filter input[type="text"],
+.filter select,
+.filter input[type="date"] {
+    padding: 10px;
+    border: 2px solid #a51943;
+    border-radius: 20px;
+    font-size: 1rem;
+    width: 250px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: border 0.3s ease;
+}
+
+.filter input[type="text"]:focus,
+.filter select:focus,
+.filter input[type="date"]:focus {
+    border-color: #f3008e;
+}
+
+.event-container {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center; 
+    margin-top: 80px; 
+}
+
+.event-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 60px; 
+    padding: 15px; 
+    width: 200px; 
+    text-align: center; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between; 
+    min-height: 300px; 
+}
+
+.event-image {
+    width: 100%; 
+    height: 150px; 
+    object-fit: cover; 
+    border-radius: 8px; 
+}
+
+.event-card h3 {
+    font-size: 1.2rem; 
+    margin: 5px 0; 
+    line-height: 1.3; 
+}
+
+.event-card p {
+    font-size: 1rem; 
+    margin: 5px 0; 
+}
+
+/* Estilo para alinear la fecha en las tarjetas de los eventos*/
+
+.event-card input[type="date"] {
+    border: none; 
+    background-color: transparent; 
+    font-size: 1rem; 
+    text-align: center; 
+    margin: 10px 0; 
+    color: #a51943; 
+    outline: none; 
+    display: block; 
+    width: 100%; 
+}
+
+.event-card input[type="date"]:focus {
+    background-color: transparent; 
+    color: #a51943; 
+}
+
+/* Estilo para el elemento select en el filtrado de eventos al hacer foco */
+
+.event-card select {
+    background-color: white; 
+    color: #333; 
+    border: 1px solid #ddd;
+    border-radius: 4px; 
+    padding: 10px; 
+    outline: none; 
+    width: 100%; 
+}
+
+
+.event-card select:focus {
+    background-color: white; 
+    border-color: #a51943; 
+    box-shadow: none; 
+}
+
+.event-card button {
+    background-color: #a51943; 
+    color: white; 
+    border: none; 
+    padding: 8px 12px; 
+    border-radius: 5px;
+    cursor: pointer; 
+    transition: background-color 0.3s; 
+    margin-top: auto; 
+}
+
+.event-card button:hover {
+    background-color: #f3008ec2; 
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        display: none; 
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .navbar.active {
+        display: flex;
+    }
+
+    .event-container {
+        flex-direction: column; 
+        align-items: center; 
+    }
+
+    .event-card {
+        width: 90%; 
+    }
+}
+
+
+/* Estilos y ajustes del formulario de inicio de sesión */
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; 
+    position: relative;
+    height: calc(100vh - 80px); 
+    margin-top: 0; 
+    padding-top: 60px; 
+}
+
+.login-container {
+    width: 90%;
+    max-width: 400px;
+    padding: 30px; 
+    background: #fff;
+    border-radius: 16px; 
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3); 
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.login-container h1 {
+    text-align: center; 
+    margin-bottom: 20px; 
+    font-size: 24px; 
+    font-weight: bold; 
+    text-transform: uppercase; 
+}
+
+.login-container input {
+    width: 100%;
+    padding: 8px; 
+    margin: 15px 0; 
+    border: 1px solid #ccc;
+    border-radius: 8px; 
+}
+
+.login-container button {
+    margin-top: 15px; 
+    padding: 12px; 
+    width: 100%;
+    border: none;
+    border-radius: 8px; 
+    background-color: #a51943;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px; 
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-container button:hover {
+    background-color: #f3008ec2;
+}
+
+.register-button {
+    margin-top: 15px; 
+    padding: 12px; 
+    width: 100%;
+    border: none;
+    border-radius: 8px; 
+    background-color: #a51943;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px; 
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s; 
+}
+
+.register-button:hover {
+    background-color: #f3008ec2;
+    box-shadow: inset -3px -3px 10px rgba(99, 99, 99, 0.5); 
+}
+
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+#toggle-password {
+    position: absolute;
+    right: 10px; 
+    cursor: pointer;
+}
+
+
+/* Media Queries para dispositivos pequeños (Responsive) */
+
+@media (max-width: 768px) {
+    
+}
+
+/* Estilos y ajustes del formulario de registro */
+
+.register-container {
+    width: 80%; 
+    max-width: 400px; 
+    padding: 25px; 
+    background: #fff;
+    border-radius: 16px; 
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3); 
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    margin: 20px auto; 
+    position: relative; 
+    top: -20px; 
+}
+
+
+
+.register-container h1 {
+    text-align: center; 
+    margin-bottom: 15px; 
+    font-size: 20px; 
+    font-weight: bold; 
+    text-transform: uppercase; 
+}
+
+.register-container input,
+.register-container select {
+    width: 100%;
+    padding: 12px; 
+    margin: 10px 0; 
+    border: 1px solid #ccc;
+    border-radius: 8px; 
+}
+
+.register-container button {
+    margin-top: 15px; 
+    padding: 10px; 
+    width: 100%;
+    border: none;
+    border-radius: 8px; 
+    background-color: #a51943;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px; 
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.register-container button:hover {
+    background-color: #f3008ec2;
+}
+
+/* Estilo para el enlace de "¿Ya tienes cuenta?" */
+
+.register-container a {
+    display: block; 
+    text-align: center; 
+    margin-top: 20px; 
+    text-decoration: none; 
+    color: #a51943; 
+    transition: transform 0.3s; 
+}
+
+.register-container a:hover {
+    transform: scale(1.1); 
+}
+
+/* Media Queries para dispositivos pequeños (Responsive) */
+
+@media (max-width: 768px) {
+    
+}
+
+/* Contenedor Principal para el Carrusel de OTROS EVENTOS*/
+
+.carousel-info-container {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    margin: 20px 20px; 
+}
+
+/* Estilos y ajustes al Carrusel de OTROS EVENTOS */
+
+.carousel-event {
+    width: 70%; 
+    background-color: #a51943; 
+    padding: 10px;
+    border-radius: 25px;
+    margin-bottom: 20px; 
+    margin-left: auto;
+    margin-right: auto; 
+    position: relative; 
+    overflow: hidden; 
+}
+
+.events-carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+}
+
+/* Ajustes y animaciones de las imagenes en el carrusel */
+
+.carousel-inner-event {
+    display: flex;
+    transition: transform 1s ease-in-out; 
+}
+
+.carousel-inner-event img {
+    min-width: 100%; 
+    max-height: 300px; 
+    object-fit: cover; 
+    border-radius: 15px;
+}
+
+/* Estilos para las flechas del carrusel */
+
+#btn-prev-event, #btn-next-event {
+    background-color: rgba(255, 255, 255, 0.8); 
+    border: none;
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%; 
+    cursor: pointer; 
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px; 
+}
+
+#btn-prev-event {
+    left: 10px;
+}
+
+#btn-next-event {
+    right: 10px;
+}
+
+/* Contenedores INFORMACION, DESCRIPCION y MAPA de los EVENTOS */
+.info-container,
+.description-container,
+.map-container {
+    width: 70%; 
+    background-color: #a51943; 
+    padding: 10px;
+    border-radius: 15px;
+    color: #fff; 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    margin: 20px auto; 
+}
+
+/* Alinea y ajusta títulos de los contenedores */
+
+.info-container h2,
+.description-container h2,
+.map-container h3 {
+    width: 100%; 
+    text-align: center; 
+    margin-bottom: 15px; 
+}
+
+/* Mayor separación debajo del título de la descripción */
+
+.description-container h2 {
+    margin-bottom: 25px; 
+}
+
+/* Alinea el texto de los párrafos a la izquierda */
+
+.info-container p,
+.description-container p {
+    text-align: center; 
+}
+
+/* Botón Comprar */
+.btn-comprar {
+    background-color: white; 
+    color: #a51943; 
+    border: none; 
+    padding: 8px 12px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s; 
+    margin-top: 20px;
+    align-self: center; 
+}
+
+.btn-comprar:hover {
+    background-color: #f3008ec2; 
+    color: white;
+}
+
+/* iframe dentro del contenedor del mapa */
+#event-map {
+    border-radius: 20px;
+    margin: 20px auto; 
+    width: 80%; 
+    display: block; 
+    max-width: 100%; 
+}
+
+
+/* Media Queries para dispositivos pequeños (Responsive) */
+@media (max-width: 768px) {
+    .carousel-event, .info-container, .description-container, .map-container {
+        width: 95%; 
+    }
+
+    #btn-prev-event, #btn-next-event {
+        width: 35px; 
+        height: 35px;
+        font-size: 16px; 
+    }
+
+    .carousel-inner-event img {
+        max-height: 200px; 
+    }
+}
+
+/* Estilos para la disposición general de las tarjetas */
+.container-card {
+    display: flex;
+    flex-direction: column; 
+    gap: 20px; 
+    justify-content: center;
+    align-items: center; 
+    margin-top: 30px;
+}
+
+/* Estilos para la tarjeta individual */
+.container-events {
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 15px; 
+    overflow: hidden;
+    width: 757px; 
+    height: 150px; 
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    margin: 15px 0; 
+    align-items: center; 
+}
+
+/* Estilos para la imagen de la tarjeta */
+.events-images {
+    width: 100px; 
+    height: 100px; 
+    object-fit: cover;
+    border-radius: 8px; 
+    margin: 10px; 
+}
+
+/* Estilos para los detalles de la tarjeta */
+.event-details {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.event-details h3 {
+    font-size: 1.2rem; 
+    margin-bottom: 5px;
+}
+
+.event-details p {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* Estilos para la fecha del evento */
+.events-dates {
+    border: none;
+    background-color: transparent;
+    font-size: 0.9rem; 
+    color: #a51943;
+    margin-bottom: 10px;
+    text-align: left;
+    outline: none;
+}
+
+.events-dates:focus {
+    color: #a51943;
+}
+
+/* Estilos para el botón */
+.container-events button {
+    padding: 6px 10px; 
+    background-color: #a51943;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem; 
+    align-self: flex-start;
+    transition: background-color 0.3s;
+}
+
+.container-events button:hover {
+    background-color: #7e1334;
+}
+
+/* Media queries para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .container-events {
+        flex-direction: column; 
+        width: 90%; 
+        height: auto; 
+    }
+
+    .events-images {
+        width: 80px; 
+        height: 80px;
+        margin: 10px auto; 
+    }
+
+    .event-details h3 {
+        font-size: 1rem; 
+    }
+
+    .event-details p,
+    .events-dates {
+        font-size: 0.8rem; 
+    }
+
+    .container-events button {
+        font-size: 0.8rem; 
+        padding: 5px 8px; 
+    }
+}
+
+@media (max-width: 480px) {
+    .container-events {
+        width: 100%; 
+        margin: 10px 0;
+    }
+
+    .events-images {
+        width: 70px; 
+        height: 70px;
+    }
+
+    .event-details h3 {
+        font-size: 0.9rem;
+    }
+
+    .event-details p,
+    .events-dates {
+        font-size: 0.7rem;
+    }
+
+    .container-events button {
+        font-size: 0.7rem;
+        padding: 4px 6px;
+    }
+}
+
+/* Estilos para el contenedor principal tickets */
+.container-tickets {
+    background: #7e1334;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    max-width: 1000px;
+    margin: 50px auto;
+}
+
+/* Estilos para el subcontenedor */
+.subcontainer-tickets {
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 770px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilo de los títulos y etiquetas */
+.subcontainer-tickets h2 {
+    color: #000000;
+    font-family: 'Mulish', sans-serif;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.subcontainer-tickets label {
+    color: #000000;
+    font-family: 'Mulish', sans-serif;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+/* Contenedor de la fila de input */
+.form-group-tickets {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+/* Estilo del input y select */
+.subcontainer-tickets input[type="number"], 
+.subcontainer-tickets select {
+    width: 100%;
+    max-width: 250px;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+/* Contenedor de botones de flechas */
+.input-group {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+}
+
+/* Estilo total */
+.total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    width: 100%;
+}
+
+/* Estilo de la etiqueta dentro de .total */
+.total label {
+    margin: 0;
+    font-size: 1rem;
+}
+
+/* Estilo de los elementos dentro de .total */
+.total p {
+    margin: 0;
+    font-size: 1rem;
+    color: #000000;
+}
+
+/* Agregar un estilo para el span que contenga el total */
+.total span {
+    font-weight: bold;
+}
+
+/* Estilo de los botones de flechas */
+.buttons-tickets button[type="button"] {
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 4px 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.buttons-tickets button[type="button"]:hover {
+    background-color: #f0f0f0;
+}
+
+/* Estilo de los botones de Confirmar y Volver */
+.buttons-tickets {
+    display: flex;
+    gap: 10px;
+    margin-top: 30px;
+    width: 80%;
+}
+
+.buttons-tickets button {
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    padding: 12px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    flex: 1;
+}
+
+.buttons-tickets button:hover {
+    background-color: #f3008ec2;
+}
+
+/* Estilos responsivos para tablets y móviles */
+@media (max-width: 768px) {
+    .container-tickets {
+        padding: 15px;
+        margin: 30px auto;
+    }
+    
+    .subcontainer-tickets {
+        padding: 10px;
+        width: 90%;
+    }
+
+    .form-group-tickets {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .subcontainer-tickets input[type="number"],
+    .subcontainer-tickets select {
+        max-width: 100%;
+    }
+
+    .buttons-tickets {
+        flex-direction: column;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .container-tickets {
+        padding: 10px;
+        margin: 20px auto;
+    }
+
+    .subcontainer-tickets {
+        padding: 8px;
+    }
+
+    .subcontainer-tickets h2 {
+        font-size: 1.2rem;
+    }
+
+    .subcontainer-tickets label {
+        font-size: 0.9rem;
+    }
+
+    .subcontainer-tickets input[type="number"], 
+    .subcontainer-tickets select {
+        font-size: 0.8rem;
+    }
+
+    .total label, .total p {
+        font-size: 0.9rem;
+    }
+}
+
+
+
+/* Contenedor de la tabla USUARIOS */
+.title-table {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 30px;
+    text-align: center;
+}
+
+/* Botón Crear Usuario */
+.button-create-table {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.btn-primary {
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.btn-primary:hover {
+    background-color: #218838;
+}
+
+/* Tabla de Usuarios */
+.users-table {
+    width: 80%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    margin: 20px auto 0;
+}
+
+.users-table th, .users-table td {
+    padding: 8px 10px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.users-table th {
+    background-color: #333;
+    color: #fff;
+    font-weight: bold;
+}
+
+.users-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.users-table tr:hover {
+    background-color: #e6e6e6;
+}
+
+/* Estilos de botones en la tabla */
+.btn-edit-table, .btn-delete-table {
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px 15px 0 0;
+    width: 150px;
+    text-align: center;
+}
+
+.btn-edit-table {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.btn-edit-table:hover {
+    background-color: #218838;
+}
+
+.btn-delete-table {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-delete-table:hover {
+    background-color: #c82333;
+}
+
+.btn-delete-table:focus {
+    outline: none;
+}
+
+/* Responsividad */
+
+/* Ajustes para tablets y pantallas medianas */
+@media (max-width: 768px) {
+    .users-table {
+        width: 90%; /* Ancho más ajustado para dispositivos medianos */
+    }
+    
+    .btn-edit-table, .btn-delete-table {
+        width: 100px; /* Reducir tamaño de botones */
+        font-size: 13px; /* Reducir tamaño de fuente */
+    }
+
+    .btn-primary {
+        font-size: 14px; /* Reducir tamaño de fuente en botón de creación */
+        padding: 8px 16px;
+    }
+}
+
+/* Ajustes para móviles */
+@media (max-width: 480px) {
+    .title-table {
+        width: 95%;
+    }
+    
+    .users-table {
+        width: 95%;
+        font-size: 12px; /* Reducir tamaño de fuente general de la tabla */
+    }
+    
+    .users-table th, .users-table td {
+        padding: 6px 8px; /* Ajustar espaciado en celdas */
+    }
+
+    .button-create-table {
+        flex-direction: column; /* Botón de creación en columna para móviles */
+        align-items: center;
+    }
+
+    .btn-primary {
+        width: 100%; /* Botón de creación ocupa todo el ancho */
+        font-size: 14px;
+    }
+    
+    .btn-edit-table, .btn-delete-table {
+        width: 80px; /* Más pequeño en móviles */
+        font-size: 12px;
+    }
+}
+
+/* Estilos y ajustes para MI PERFIL */
+
+.profile-container {
+    background-color: #f4f4f9;
+    padding: 40px;
+    margin: 50px auto;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.profile-container h1 {
+    font-family: 'Mulish', sans-serif;
+    text-align: center;
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.profile-info p {
+    font-size: 20px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.profile-info .email {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    font-size: 22px;
+    font-weight: 600;
+    color: #2c3e50;
+    text-align: center;
+}
+
+.logout-button {
+    display: block;
+    margin: 30px auto 0;
+    padding: 12px 25px;
+    font-size: 18px;
+    background-color: #a51943;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+    background-color: #f3008ec2;
+    color: white;
+}
+
+/* Responsividad */
+
+/* Ajustes para tablets y pantallas medianas */
+@media (max-width: 768px) {
+    .profile-container {
+        padding: 30px;
+        margin: 30px auto;
+        max-width: 90%;
+    }
+
+    .profile-container h1 {
+        font-size: 24px;
+    }
+
+    .profile-info p {
+        font-size: 18px;
+    }
+
+    .profile-info .email {
+        font-size: 20px;
+        padding: 15px;
+    }
+
+    .logout-button {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+}
+
+/* Ajustes para móviles */
+@media (max-width: 480px) {
+    .profile-container {
+        padding: 20px;
+        margin: 20px auto;
+        max-width: 95%;
+    }
+
+    .profile-container h1 {
+        font-size: 22px;
+    }
+
+    .profile-info p {
+        font-size: 16px;
+    }
+
+    .profile-info .email {
+        font-size: 18px;
+        padding: 10px;
+    }
+
+    .logout-button {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+}
+
+/* Estilos RESEÑAS */
+
+/* contenedor RESEÑAS */
+.container-reseñas {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #f4f4f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+}
+
+.title-reseñas {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.subtitle-reseñas {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.form-reseña {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+.textarea-reseña {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    resize: vertical;
+    margin-bottom: 10px;
+}
+
+.button-reseña {
+    display: block;
+    margin: 30px auto 0;
+    padding: 12px 25px;
+    font-size: 18px;
+    background-color: #a51943; /* Mismo color que el de logout */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    width: 750px; /* Longitud del botón */
+    transition: background-color 0.3s ease;
+}
+
+.button-reseña:hover {
+    background-color: #f3008ec2; /* Mismo color hover que el de logout */
+    color: white;
+}
+
+/* Lista de reseñas */
+.list-reseñas {
+    padding: 0;
+    list-style: none;
+}
+
+.reseña-item {
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Centra el contenido dentro del item */
+}
+
+.reseña-comentario {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.reseña-fecha {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 20px; /* Asegura mayor espacio entre la fecha y el botón */
+}
+
+/* Botón de eliminar */
+.eliminar-container {
+    display: flex;
+    justify-content: center; /* Centra el contenedor del botón */
+    margin-top: 10px; /* Asegura que el botón quede debajo de la fecha */
+}
+
+.button-eliminar-reseña {
+    padding: 5px 10px;
+    background-color: #e63946;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.button-eliminar-reseña:hover {
+    background-color: #d32f2f;
+}
+
+
+/* Estilos para RESEÑAS */
+
+/* Contenedor principal de confirmación de compra */
+.confirmation-container {
+    background-color: #f4f4f9;
+    padding: 40px;
+    margin: 50px auto;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: 'Mulish', sans-serif;
+}
+
+.confirmation-container h1 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.confirmation-container p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.download-qr-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    font-size: 18px;
+    background-color: #a51943;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.download-qr-link:hover {
+    background-color: #f3008ec2;
+    color: white;
+}
+
+/* Estilos para TABLA MIS TICKETS*/
+
+.titulo-mis_tickets {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 30px;
+    text-align: center;
+}
+
+/* Estilos de la tabla */
+.tickets-table {
+    width: 80%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    margin: 30px auto 0;
+}
+
+.tickets-table th, .tickets-table td {
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 16px;
+}
+
+.tickets-table th {
+    background-color: #333;
+    color: #fff;
+    font-weight: bold;
+}
+
+.tickets-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.tickets-table tr:hover {
+    background-color: #e6e6e6;
+}
+
+.ticket-qr {
+    max-width: 80px;  /* Aumentar el tamaño máximo */
+    height: auto;  /* Mantener la proporción */
+}
